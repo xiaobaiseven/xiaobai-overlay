@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories version="1.0">
+<repo priority="50" status="unofficial">
+	<name>xiaobaiseven-overlay</name>
+	<description>xiaobaiseven's personal Gentoo Linux overlay</description>
+	<homepage>https://github.com/xiaobaiseven/xiaobai-overlay</homepage>
+	<owner>
+		<email>1146112953@qq.com</email>
+		<name>xiaobaiseven</name>
+	</owner>
+	<source type="git">https://github.com/xiaobaiseven/xiaobai-overlay.git</source>
+	<feed>https://github.com/xiaobaiseven/xiaobai-overlay/commits/main.atom</feed>
+</repo>
+</repositories>
