@@ -1,9 +1,9 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit git-r3 cmake xdg
+inherit cmake xdg
 
 DESCRIPTION="Powerful yet simple to use screenshot software"
 HOMEPAGE="https://flameshot.org https://github.com/flameshot-org/flameshot"
@@ -23,10 +23,22 @@ DEPEND="
 	dev-qt/qtdbus:5
 	sys-apps/dbus
 "
-BDEPEND="${DEPEND}"
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 RDEPEND="${DEPEND}"
+
 src_prepare() {
-	xdg_src_prepare
+	rm -r external/singleapplication || die
+
 	cmake_src_prepare
-	elog "Read https://github.com/lupoDharkael/flameshot#global for runtime configuration"
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DUSE_EXTERNAL_SINGLEAPPLICATION=1
+		-DENABLE_CACHE=0
+	)
+
+	cmake_src_configure
 }
