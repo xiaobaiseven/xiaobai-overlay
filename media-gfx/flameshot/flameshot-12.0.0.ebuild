@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit git-r3 cmake xdg
+
 DESCRIPTION="Powerful yet simple to use screenshot software"
 HOMEPAGE="https://flameshot.org https://github.com/flameshot-org/flameshot"
 SRC_URI="https://github.com/flameshot-org/flameshot/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -21,21 +23,10 @@ DEPEND="
 	dev-qt/qtdbus:5
 	sys-apps/dbus
 "
-BDEPEND="
-dev-qt/linguist-tools:5
-"
+BDEPEND="${DEPEND}"
 RDEPEND="${DEPEND}"
 src_prepare() {
-	rm -r external/singleapplication || die
-
+	xdg_src_prepare
 	cmake_src_prepare
-}
-
-src_configure() {
-	local mycmakeargs=(
-		-DUSE_EXTERNAL_SINGLEAPPLICATION=1
-		-DENABLE_CACHE=0
-	)
-
-	cmake_src_configure
+	elog "Read https://github.com/lupoDharkael/flameshot#global for runtime configuration"
 }
