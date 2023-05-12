@@ -20,6 +20,7 @@ RDEPEND="
 	media-libs/fontconfig
 	x11-libs/libX11
 	x11-libs/libXft
+	media-libs/gd
 "
 DEPEND="
 	${RDEPEND}
