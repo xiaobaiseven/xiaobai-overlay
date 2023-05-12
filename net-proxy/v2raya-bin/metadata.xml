@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>universebenzene@sina.com</email>
+		<name>Astro Benzene</name>
+	</maintainer>
+	<use>
+		<flag name="v2ray">To be able to use v2ray-core. Default for old version. From 2.0.4 you need to disable xray flag to use v2ray as default</flag>
+		<flag name="xray">To use xray-core as default from 2.0.4</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">v2rayA/v2rayA</remote-id>
+	</upstream>
+</pkgmetadata>
