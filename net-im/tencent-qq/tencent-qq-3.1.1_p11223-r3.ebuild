@@ -34,6 +34,7 @@ RDEPEND="
 	app-accessibility/at-spi2-core:2
 	app-crypt/libsecret
 	virtual/krb5
+	net-dns/avahi
 	sys-apps/keyutils
 	!system-vips? ( <dev-libs/glib-2.76 )
 	system-vips? (
