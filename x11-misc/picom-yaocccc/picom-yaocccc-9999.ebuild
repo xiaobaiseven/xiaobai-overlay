@@ -7,7 +7,7 @@ inherit git-r3 meson xdg
 
 DESCRIPTION="A lightweight compositor for X11 (previously a compton fork)"
 HOMEPAGE="https://github.com/jonaburg/picom"
-EGIT_REPO_URI="https://github.com/jonaburg/picom.git"
+EGIT_REPO_URI="https://github.com/yaocccc/picom.git"
 
 LICENSE="MPL-2.0 MIT"
 SLOT="0"
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
 
-DOCS=( README.md picom.sample.conf )
+DOCS=(README.md picom.sample.conf)
 
 src_configure() {
 	local emesonargs=(
