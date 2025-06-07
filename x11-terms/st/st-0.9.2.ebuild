@@ -21,51 +21,52 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXft
 	media-libs/gd
+    ~x11-terms/st-terminfo-${PV}
 "
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="virtual/pkgconfig"
-
 src_prepare() {
-	default
+        default
 
-	sed -i \
-		-e "/^X11LIB/{s:/usr/X11R6/lib:/usr/$(get_libdir)/X11:}" \
-		-e '/^STLDFLAGS/s|= .*|= $(LDFLAGS) $(LIBS)|g' \
-		-e '/^X11INC/{s:/usr/X11R6/include:/usr/include/X11:}' \
-		config.mk || die
-	sed -i \
-		-e '/tic/d' \
-		Makefile || die
+        sed -i \
+                -e "/^X11LIB/{s:/usr/X11R6/lib:/usr/$(get_libdir)/X11:}" \
+                -e '/^STLDFLAGS/s|= .*|= $(LDFLAGS) $(LIBS)|g' \
+                -e '/^X11INC/{s:/usr/X11R6/include:/usr/include/X11:}' \
+                config.mk || die
+        sed -i \
+                -e '/tic/d' \
+                Makefile || die
 
-	restore_config config.h
+        restore_config config.h
 }
 
 src_configure() {
-	sed -i \
-		-e "s|pkg-config|$(tc-getPKG_CONFIG)|g" \
-		config.mk || die
+        sed -i \
+                -e "s|pkg-config|$(tc-getPKG_CONFIG)|g" \
+                config.mk || die
 
-	tc-export CC
+        tc-export CC
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr/local install
+        emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
 
-	dodoc TODO
+        dodoc TODO
 
-	make_desktop_entry ${PN} simpleterm utilities-terminal 'System;TerminalEmulator;' ''
+        make_desktop_entry ${PN} simpleterm st 'System;TerminalEmulator;' ''
 
-	save_config config.h
+        save_config config.h
 }
 
 pkg_postinst() {
-	if ! [[ "${REPLACING_VERSIONS}" ]]; then
-		elog "Please ensure a usable font is installed, like"
-		elog "    media-fonts/corefonts"
-		elog "    media-fonts/dejavu"
-		elog "    media-fonts/urw-fonts"
-	fi
+        if [[ -z "${REPLACING_VERSIONS}" ]]; then
+                elog "Please ensure a usable font is installed, like"
+                elog "    media-fonts/corefonts"
+                elog "    media-fonts/dejavu"
+                elog "    media-fonts/urw-fonts"
+        fi
 }
+

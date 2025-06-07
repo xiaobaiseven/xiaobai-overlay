@@ -14,7 +14,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 LICENSE="MIT"
 SLOT="0"
-
 RDEPEND="
 	media-libs/fontconfig
 	x11-libs/libX11
@@ -24,31 +23,34 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-
 src_prepare() {
-	default
+        default
 
-	sed -i \
-		-e "s/ -Os / /" \
-		-e "/^\(LDFLAGS\|CFLAGS\|CPPFLAGS\)/{s| = | += |g;s|-s ||g}" \
-		-e "/^X11LIB/{s:/usr/X11R6/lib:/usr/$(get_libdir)/X11:}" \
-		-e '/^X11INC/{s:/usr/X11R6/include:/usr/include/X11:}' \
-		config.mk || die
+        sed -i \
+                -e "s/ -Os / /" \
+                -e "/^\(LDFLAGS\|CFLAGS\|CPPFLAGS\)/{s| = | += |g;s|-s ||g}" \
+                -e "/^X11LIB/{s:/usr/X11R6/lib:/usr/$(get_libdir)/X11:}" \
+                -e '/^X11INC/{s:/usr/X11R6/include:/usr/include/X11:}' \
+                config.mk || die
 
-	restore_config config.h
+        restore_config config.h
 }
 
+src_compile() {
+        emake CC="$(tc-getCC)" dwm
+}
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr/local" install
+        emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 
-	exeinto /etc/X11/Sessions
-	newexe "${FILESDIR}"/dwm-session2 dwm
+        exeinto /etc/X11/Sessions
+        newexe "${FILESDIR}"/dwm-session2 dwm
 
-	insinto /usr/share/xsessions
-	doins "${FILESDIR}"/dwm.desktop
+        insinto /usr/share/xsessions
+        doins "${FILESDIR}"/dwm.desktop
 
-	dodoc README
+        dodoc README
 
-	save_config config.h
+        save_config config.h
 }
+
