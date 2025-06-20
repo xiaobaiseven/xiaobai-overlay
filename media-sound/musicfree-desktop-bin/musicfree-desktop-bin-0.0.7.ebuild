@@ -8,7 +8,7 @@ inherit unpacker desktop
 DESCRIPTION=" 插件化、定制化、无广告的免费音乐播放器 "
 HOMEPAGE="https://musicfree.catcat.work/"
 SRC_URI="https://github.com/maotoumao/MusicFreeDesktop/releases/download/v${PV}/MusicFree-${PV}-linux-amd64.deb"
-LICENSE="AGPL 3.0"
+LICENSE="AGPL 3.0"  # 需确认实际许可证
 SLOT="0"
 S="${WORKDIR}"
 KEYWORDS="~amd64"
@@ -35,17 +35,12 @@ QA_PREBUILT="
 
 
 src_install(){
-		# 安装到/opt/muscifree
 		insinto /opt/${MY_PN}
-		# 复制文件
 		doins -r usr/lib/${MY_PN}/*
-		# 复制文档
 		dodoc usr/share/doc/${MY_PN}/copyright
-		# 复制图片
-		doicons usr/share/pixmaps/${MY_PN}.png
-		# 复制桌面图标
+		insinto /usr/share/pixmaps
+		doins -r usr/share/pixmaps/${MY_PN}.png
 		domenu usr/share/applications/${MY_PN}.desktop
-
 		local f
 		for f in ${QA_PREBUILT}; do
                 fperms +x "/${f}"
