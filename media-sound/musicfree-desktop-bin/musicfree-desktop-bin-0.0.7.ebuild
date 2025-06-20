@@ -24,19 +24,19 @@ RDEPEND="x11-libs/gtk+:3
 "
 
 QA_PREBUILT="
-		opt/${MY_PN}/usr/lib/${MY_PN}/chrome-sandbox
-		opt/${MY_PN}/usr/lib/${MY_PN}/libEGL.so
-		opt/${MY_PN}/usr/lib/${MY_PN}/libffmpeg.so
-		opt/${MY_PN}/usr/lib/${MY_PN}/libGLESv2.so
-		opt/${MY_PN}/usr/lib/${MY_PN}/libvk_swiftshader.so
-		opt/${MY_PN}/usr/lib/${MY_PN}/libvulkan.so.1
-		opt/${MY_PN}/usr/lib/${MY_PN}/MusicFree
+		opt/${MY_PN}/chrome-sandbox
+		opt/${MY_PN}/libEGL.so
+		opt/${MY_PN}/libffmpeg.so
+		opt/${MY_PN}/libGLESv2.so
+		opt/${MY_PN}/libvk_swiftshader.so
+		opt/${MY_PN}/libvulkan.so.1
+		opt/${MY_PN}/MusicFree
 "
 
 
 src_install(){
 		insinto /opt/${MY_PN}
-		doins -r *
+		doins -r usr/lib/${MY_PN}/*
 		dodoc usr/share/doc/${MY_PN}/copyright
 		doicons usr/share/pixmaps/${MY_PN}.png
 		domenu usr/share/applications/${MY_PN}.desktop
@@ -44,8 +44,8 @@ src_install(){
 		for f in ${QA_PREBUILT}; do
                 fperms +x "/${f}"
         done
-		fperms u+s /opt/${MY_PN}/usr/lib/${MY_PN}/chrome-sandbox
-		dosym /opt/${MY_PN}/usr/lib/${MY_PN}/MusicFree /usr/bin/${MY_PN}
+		fperms u+s /opt/${MY_PN}/chrome-sandbox
+		dosym /opt/${MY_PN}/MusicFree /usr/bin/${MY_PN}
 }
 
 
