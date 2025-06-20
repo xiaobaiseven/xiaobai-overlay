@@ -48,5 +48,27 @@ src_install(){
 		fperms u+s /opt/${MY_PN}/chrome-sandbox
 		dosym /opt/${MY_PN}/MusicFree /usr/bin/${MY_PN}
 }
-
+pkg_postinst(){
+		einfo "EN------------------------------------------------------"
+		einfo "Installation successful!"
+		einfo "No music source by default."
+		einfo "Copy the link to use in MusicFree plug-in subscriptions:"
+		einfo "********************************************************"
+		einfo "https://musicfreepluginshub.2020818.xyz/plugins.json"
+		einfo "********************************************************"
+		einfo "This aggregation of plug-in interface more, a "
+		einfo "subscription is enough, remember to delete the original"
+		einfo "subscription and click the top right menu to uninstall"
+		einfo "all plug-ins to avoid conflict."
+		einfo "ZH------------------------------------------------------"
+		einfo "安装成功！"
+		einfo "默认无音乐源。"
+		einfo "复制下面的链接在 MusicFree 插件订阅中使用："
+		einfo "********************************************************"
+		einfo "https://musicfreepluginshub.2020818.xyz/plugins.json"
+		einfo "********************************************************"
+		einfo "这个聚合的插件接口比较多，一个订阅就够用，记得删除原有订"
+		einfo "阅和点击右上角菜单的卸载全部插件以免冲突。"
+		einfo "--------------------------------------------------------"
+}
 
