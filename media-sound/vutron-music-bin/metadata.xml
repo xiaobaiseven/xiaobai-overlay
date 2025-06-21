@@ -6,7 +6,7 @@
 		<name>xiaobai</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">maotoumao/MusicFreeDesktop</remote-id>
-		<bugs-to>https://github.com/maotoumao/MusicFreeDesktop/issues</bugs-to>
+		<remote-id type="github">stark81/VutronMusic</remote-id>
+		<bugs-to>https://github.com/stark81/VutronMusic/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
