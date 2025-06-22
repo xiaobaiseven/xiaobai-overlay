@@ -8,7 +8,7 @@ inherit unpacker desktop
 DESCRIPTION=" 插件化、定制化、无广告的免费音乐播放器 "
 HOMEPAGE="https://musicfree.catcat.work/"
 SRC_URI="https://github.com/maotoumao/MusicFreeDesktop/releases/download/v${PV}/MusicFree-${PV}-linux-amd64.deb"
-LICENSE="AGPL 3.0"  # 需确认实际许可证
+LICENSE="AGPL 3.0"
 SLOT="0"
 S="${WORKDIR}"
 KEYWORDS="~amd64"
